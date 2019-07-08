@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react'
 import '../Notepad.css'
 
-function Notepad() {
+function Notepad(props) {
 
   const[noteData, setNoteData] = useState({title: "", content: ""})
   const[noteId, setNoteId] = useState(null)
@@ -15,10 +15,6 @@ function Notepad() {
     updateNote(noteData)
   }, [noteData])
 
-  const handleChange = (e) => {
-    setNoteData({...noteData, [e.target.name]:e.target.value})
-  }
-
   const createNote = (noteData) => {
     fetch('http://localhost:3000/api/v1/notes', {
       method: 'POST',
@@ -29,6 +25,7 @@ function Notepad() {
     })
     .then(res => res.json())
     .then(data => setNoteId(data.id))
+    .then(data => props.addNote(data))
   }
 
   const updateNote = (noteData) => {
@@ -39,6 +36,10 @@ function Notepad() {
       },
       body: JSON.stringify(noteData)
     })
+  }
+
+  const handleChange = (e) => {
+    setNoteData({...noteData, [e.target.name]:e.target.value})
   }
 
   const print = () => {

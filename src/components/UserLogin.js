@@ -21,7 +21,7 @@ function UserLogin(props) {
       body: JSON.stringify(userData)
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => props.setCurrentUser(data))
   }
 
   return (
@@ -35,6 +35,7 @@ function UserLogin(props) {
       <input
         onChange={(e)=>handleChange(e)}
         value={userData.password}
+        type="password"
         placeholder="Password"
         name="password">
       </input> 
