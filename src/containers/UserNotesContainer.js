@@ -1,1 +1,0 @@
-map through the fucking notes and make usernotes. pass them props. 
