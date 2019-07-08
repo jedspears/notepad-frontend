@@ -2,15 +2,10 @@ import React from 'react';
 
 function UserNote(props) {
 
-  // const renderNotes = (props) => {
-  //   props.notes.map(note => 
-  //     <RENDER NOTE CARDS HERE>
-  //   )
-  // }
-
   return (
     <div>
-     {()=>renderNotes()}
+     <h1>props.title</h1>
+     <p>props.content</p>
     </div>
   );
 }
