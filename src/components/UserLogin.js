@@ -12,7 +12,6 @@ function UserLogin(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(userData)
     fetch('http://localhost:3000/api/v1/users', {
       method: 'POST',
       headers: {

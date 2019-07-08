@@ -4,7 +4,7 @@ import '../Notepad.css'
 
 function Notepad(props) {
 
-  const[noteData, setNoteData] = useState({title: "", content: ""})
+  const[noteData, setNoteData] = useState({title: "", content: "", user_id: props.user.id})
   const[noteId, setNoteId] = useState(null)
 
   useEffect((noteData) => {
@@ -15,13 +15,14 @@ function Notepad(props) {
     updateNote(noteData)
   }, [noteData])
 
-  const createNote = (noteData) => {
+  const createNote = () => {
     fetch('http://localhost:3000/api/v1/notes', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
-      body: JSON.stringify(noteData)
+      body: JSON.stringify({noteData})
     })
     .then(res => res.json())
     .then(data => setNoteId(data.id))
@@ -33,8 +34,9 @@ function Notepad(props) {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
-      body: JSON.stringify(noteData)
+      body: JSON.stringify({noteData})
     })
   }
 
