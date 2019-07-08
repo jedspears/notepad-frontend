@@ -1,0 +1,9 @@
+#thenote {
+  position: absolute;
+  left: 15%;
+  top: 10%;
+  height: 800px;
+  width: 1200px;
+  background-color: red;
+  border-radius: 0.5%
+}

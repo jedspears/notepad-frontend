@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react'
+import '../Notepad.css'
 
 function Notepad() {
 
@@ -54,12 +55,16 @@ function Notepad() {
           value={noteData.title}
           name="title">
         </input>
-        <input 
-          onChange={(e)=>handleChange(e)}
-          type="textField" 
-          value={noteData.content}
-          name="content">
-        </input>
+        <div className="input-field" ></div>
+          <textarea 
+            id="thenote"
+            className="materialize-textarea"
+            onChange={(e)=>handleChange(e)}
+            type="textArea" 
+            value={noteData.content}
+            name="content">
+          </textarea>
+        <div/>
       </form>
     </div>
   );
