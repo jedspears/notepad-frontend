@@ -16,32 +16,28 @@ function App() {
   // }, [notes])
 
   const checkLogIn = () => {
-    console.log(user)
     if (loggedIn) {
       return (
           <Notepad
             addNote={()=>addNote()}
+            user={user}
           />
       )
     } else {
       return (
         <UserLogin
-          setCurrentUser={()=>setCurrentUser()}
+          setCurrentUser={setCurrentUser}
         />
       )
     }
-  }
-
-  const printUser = () => {
-    console.log(user)
   }
 
   const addNote = (note) => {
     setNotes([...notes, note])
   }
 
-  const setCurrentUser = (user) => {
-    setUser(user)
+  const setCurrentUser = (newUser) => {
+    setUser(newUser)
     setLoggedIn(true)
   }
 
@@ -54,7 +50,6 @@ function App() {
 
   return (
     <div className="App">
-      {printUser()}
       {checkLogIn()}
     </div>
   );
