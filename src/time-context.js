@@ -9,6 +9,4 @@ export const times = {
   }
 };
 
-export const TimeContext = React.createContext(
-  times.day // default value
-);
+export const TimeContext = React.createContext(times.day);

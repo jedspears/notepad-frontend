@@ -27,6 +27,4 @@ export const temperature = {
   },
 };
 
-export const TemperatureContext = React.createContext(
-  temperature.warm1 // default value
-);
+export const TemperatureContext = React.createContext(temperature.warm4);

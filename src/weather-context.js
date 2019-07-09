@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export const weather = {
   clear: {
@@ -35,6 +35,18 @@ export const weather = {
   },
 };
 
-export const WeatherContext = React.createContext(
-  weather.clear // default value
-);
+export const WeatherContext = React.createContext([{}, ()=>{}]);
+
+export const WeatherProvider = (props) => {
+  const [state, setState] = useState(weather.clear);
+
+  const setStateWithKey = (key) => {
+    setState(weather[key])
+  }
+
+  return (
+    <WeatherContext.Provider value={[state, setStateWithKey]}>
+      {props.children}
+    </WeatherContext.Provider>
+  );
+}
