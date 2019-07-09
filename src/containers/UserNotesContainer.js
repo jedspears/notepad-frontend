@@ -7,7 +7,7 @@ function UserNotesContainer(props) {
   const renderNotes = () => {
     console.log(props)
     return (
-      props.user.notes.map(note =>  
+      props.notes.map(note =>  
         <UserNote
           key={note.id}
           {...note}
@@ -18,7 +18,9 @@ function UserNotesContainer(props) {
 
   return (
     <div id="notes-container">
-      {renderNotes()}
+      <ul className="collection">
+        {renderNotes()}
+      </ul>
     </div>
   )
 }
