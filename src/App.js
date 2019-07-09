@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Notepad from './components/Notepad';
 import UserNotesContainer from './containers/UserNotesContainer'
+import ThemedComponent from './components/ThemedComponent'
 import UserLoginContainer from './containers/UserLoginContainer'
 import WeatherContainer from './containers/WeatherContainer'
 import './App.css';
@@ -22,6 +23,7 @@ function App() {
     if (loggedIn) {
       return (
         <div>
+          <ThemedComponent currentWeather={user.weather}/>
           <Notepad
             addNote={addNote}
             user={user}
