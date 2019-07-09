@@ -2,10 +2,10 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Notepad from './components/Notepad';
 import UserNotesContainer from './containers/UserNotesContainer'
-import LoginWindow from './containers/LoginWindow'
-//import { WeatherContext, weather } from './weather-context'
 import ThemedComponent from './components/ThemedComponent'
-import './App.css'
+import UserLoginContainer from './containers/UserLoginContainer'
+import WeatherContainer from './containers/WeatherContainer'
+import './App.css';
 
 function App() {
 
@@ -13,9 +13,11 @@ function App() {
   const[user, setUser] = useState({})
   const[loggedIn, setLoggedIn] = useState(false)
 
-  // useEffect(()=> {
-  //   getUserNotes()
-  // }, [])
+  useEffect(()=> {
+    if (user.notes) {
+      setNotes(user.notes)
+    }
+  }, [user])
 
   const checkLogIn = () => {
     if (loggedIn) {
@@ -23,17 +25,20 @@ function App() {
         <div>
           <ThemedComponent currentWeather={user.weather}/>
           <Notepad
-            addNote={()=>addNote()}
+            addNote={addNote}
             user={user}
           />
           <UserNotesContainer
-            user={user}
+            notes={notes}
+          />
+          <WeatherContainer
+            weather={user.weather}
           />
         </div>
       )
     } else {
       return (
-        <LoginWindow
+        <UserLoginContainer
           setCurrentUser={setCurrentUser}
         />
       )
@@ -42,21 +47,12 @@ function App() {
 
   const addNote = (note) => {
     setNotes([...notes, note])
-    console.log(notes)
   }
 
   const setCurrentUser = (newUser) => {
     setUser(newUser)
     setLoggedIn(true)
-    // getUserNotes()
   }
-
-
-  // const getUserNotes = () => {
-  //   fetch(`http://localhost:3000/api/v1/users/${user.id}`)
-  //     .then(res => res.json())
-  //     .then(data => setNotes(data.notes))
-  // }
 
   return (
     <div className="App">

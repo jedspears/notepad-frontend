@@ -1,11 +1,13 @@
 import React from 'react';
+import '../UserNote.css'
 
 function UserNote(props) {
 
   return (
-    <div>
-      <p>{props.title}</p>
-    </div>
+     <li  id="col-item" className="collection-item avatar">
+       <span className="title">{props.title}</span>
+       <p>first line</p>
+    </li>
   );
 }
 
