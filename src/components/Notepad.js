@@ -7,12 +7,17 @@ function Notepad(props) {
   const[noteData, setNoteData] = useState({title: "", content: "", user_id: props.user.id})
   const[noteId, setNoteId] = useState(null)
 
-  useEffect((noteData) => {
-    createNote(noteData)
-  }, [])
+  // useEffect((noteData) => {
+  //   createNote(noteData)
+  // }, [])
 
-  useEffect((noteData) => {
-    updateNote(noteData)
+  useEffect(() => {
+    if (noteId) {
+      updateNote(noteData)
+    } else {
+      createNote(noteData)
+    }
+    console.log("in effect", noteData)
   }, [noteData])
 
   const createNote = () => {
@@ -36,7 +41,7 @@ function Notepad(props) {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      body: JSON.stringify({noteData})
+      body: JSON.stringify(noteData)
     })
   }
 
@@ -52,7 +57,8 @@ function Notepad(props) {
     <div>
       {print()}
       <form>
-        <input 
+        <input
+          id="note-title" 
           onChange={(e)=>handleChange(e)}
           type="text" 
           value={noteData.title}
@@ -60,7 +66,7 @@ function Notepad(props) {
         </input>
         <div className="input-field" ></div>
           <textarea 
-            id="thenote"
+            id="the-note"
             className="materialize-textarea"
             onChange={(e)=>handleChange(e)}
             type="textArea" 

@@ -1,0 +1,9 @@
+#notes-container {
+  position: absolute;
+  left: 0%;
+  top: 10%;
+  height: 800px;
+  width: 250px;
+  background-color: red;
+  border-radius: 0.5%
+}
