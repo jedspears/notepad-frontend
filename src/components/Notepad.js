@@ -30,8 +30,12 @@ function Notepad(props) {
       body: JSON.stringify({noteData})
     })
     .then(res => res.json())
-    .then(data => setNoteId(data.id))
-    .then(data => props.addNote(data))
+    .then(data => {
+      setNoteId(data.id)
+      props.addNote(data)
+      // return data
+    })
+    // .then(data => props.addNote(data))
   }
 
   const updateNote = (noteData) => {
@@ -58,7 +62,8 @@ function Notepad(props) {
       {print()}
       <form>
         <input
-          id="note-title" 
+          id="note-title"
+          placeholder="Title" 
           onChange={(e)=>handleChange(e)}
           type="text" 
           value={noteData.title}
