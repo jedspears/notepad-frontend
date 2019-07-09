@@ -1,9 +1,22 @@
-#thenote {
+#the-note {
   position: absolute;
   left: 15%;
   top: 10%;
   height: 800px;
   width: 1200px;
-  background-color: red;
-  border-radius: 0.5%
+  background-color: rgb(243, 250, 170);
+  border-radius: 0.5%;
+  padding: 35px;
+  font-size: 2.2em;
+}
+
+#note-title {
+  position: absolute;
+  left: 15%;
+  top: 5%;
+  height: 50px;
+  width: 1200px;
+  border-radius: 0.5%;
+  padding: 8px;
+  background-color: blue;
 }

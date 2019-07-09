@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Notepad from './components/Notepad';
 import UserNotesContainer from './containers/UserNotesContainer'
-import UserLogin from './components/UserLogin'
+import LoginWindow from './containers/LoginWindow'
 import './App.css';
 
 function App() {
@@ -13,19 +13,24 @@ function App() {
 
   // useEffect(()=> {
   //   getUserNotes()
-  // }, [notes])
+  // }, [])
 
   const checkLogIn = () => {
     if (loggedIn) {
       return (
+        <div>
           <Notepad
             addNote={()=>addNote()}
             user={user}
           />
+          <UserNotesContainer
+            user={user}
+          />
+        </div>
       )
     } else {
       return (
-        <UserLogin
+        <LoginWindow
           setCurrentUser={setCurrentUser}
         />
       )
@@ -34,19 +39,21 @@ function App() {
 
   const addNote = (note) => {
     setNotes([...notes, note])
+    console.log(notes)
   }
 
   const setCurrentUser = (newUser) => {
     setUser(newUser)
     setLoggedIn(true)
+    // getUserNotes()
   }
 
 
-  const getUserNotes = () => {
-    fetch('http://localhost:3000/api/v1/users/:id/notes')
-      .then(res => res.json())
-      .then(data => setNotes(data))
-  }
+  // const getUserNotes = () => {
+  //   fetch(`http://localhost:3000/api/v1/users/${user.id}`)
+  //     .then(res => res.json())
+  //     .then(data => setNotes(data.notes))
+  // }
 
   return (
     <div className="App">
