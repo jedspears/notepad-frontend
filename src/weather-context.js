@@ -8,7 +8,7 @@ export const weather = {
   },
   clear: {
     background: '#fafff4',
-    accent: '#F0B890',
+    accent: '#F0A875',
     text: '#1F1914',
   },
   rain: {
@@ -22,13 +22,13 @@ export const weather = {
     text: '#2E3538',
   },
   sleet: {
-    background: '#9FC6C2',
+    background: '#171C1B',
     accent: '#70C2AD',
-    text: '#171C1B',
+    text: '#AFD0CC',
   },
   wind: {
     background: '#efefef',
-    accent: '#E0B8B8',
+    accent: '#DCA3A3',
     text: '#382E2E',
   },
   fog: {
@@ -37,8 +37,8 @@ export const weather = {
     text: '#efefef',
   },
   cloudy: {
-    background: '#6a6a67',
-    accent: '#C0D7A2',
+    background: '#5a5a67',
+    accent: '#B7D590',
     text: '#fafff4',
   },
   partlyCloudy: {

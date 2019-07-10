@@ -20,7 +20,6 @@ function UserNote(props) {
           <span id="note-card-title" className="title" >
             {props.selectedNote.title ? props.selectedNote.title : "Untitled"}
           </span>
-          <p>first line</p>
         </li>
       )
     } else {
