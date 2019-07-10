@@ -9,7 +9,9 @@ function UserNote(props) {
       return (
         <li id="baba" className="collection-item avatar">
           <i id="selected-note-icon" class="material-icons circle">note</i>
-          <span id="note-card-title" className="title">{props.selectedNote.title}</span>
+          <span id="note-card-title" className="title">
+            {props.selectedNote.title ? props.selectedNote.title : "Untitled"}
+          </span>
           <p>first line</p>
         </li>
       )
@@ -20,7 +22,9 @@ function UserNote(props) {
         onClick={()=>props.selectNote(props.note)} 
         className="collection-item avatar">
           <i id="note-icon" class="material-icons circle">note</i>
-          <span id="note-card-title" className="title">{props.note.title}</span>
+          <span id="note-card-title" className="title">
+            {props.note.title ? props.note.title : "Untitled"}
+          </span>
           <p>first line</p>
         </li>
       )
