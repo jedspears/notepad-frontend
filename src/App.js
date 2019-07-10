@@ -47,6 +47,7 @@ function App() {
   }
 
   const updateNote = () => {
+    console.log(selectedNote)
     fetch(`http://localhost:3000/api/v1/notes/${selectedNote.id}`, {
       method: 'PATCH',
       headers: {
@@ -71,12 +72,12 @@ function App() {
             user={user}
             selectedNote={selectedNote}
             handleChange={handleChange}
+            createNote={createNote}
           />
           <UserNotesContainer
             selectedNote={selectedNote}
             notes={notes}
             selectNote={selectNote}
-            createNote={createNote}
           />
           <WeatherContainer
             weather={user.weather}
