@@ -8,12 +8,20 @@ import './App.css';
 
 function App() {
 
+  // var debounce = require('debounce')
+
   const[notes, setNotes] = useState([])
   const[user, setUser] = useState({})
   const[loggedIn, setLoggedIn] = useState(false)
   const[selectedNote, setSelectedNote] = useState({title: "", content: "", user_id: user.id, id:null})
 
-  useEffect(()=> {
+  // useEffect(() => {
+  //   if (loggedIn) {
+  //     notes.reverse()
+  //   }
+  // }, [])
+
+  useEffect(() => {
     if (user.notes) {
       setNotes(user.notes)
     }

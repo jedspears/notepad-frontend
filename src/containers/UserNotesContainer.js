@@ -4,6 +4,8 @@ import '../UserNotesContainer.css'
 
 function UserNotesContainer(props) {
 
+  // props.notes.reverse()
+
   const renderNotes = () => {
     console.log(props.notes)
     return (
