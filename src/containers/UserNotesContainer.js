@@ -4,15 +4,12 @@ import '../UserNotesContainer.css'
 
 function UserNotesContainer(props) {
 
-  // props.notes.reverse()
-
   const renderNotes = () => {
-    console.log(props.notes)
     return (
       props.notes.map(note =>  
         <UserNote
           selectNote={props.selectNote}
-          selectedNote={props.selectedNote}
+          selectedNoteId={props.selectedNoteId}
           key={note.id}
           note={note}
         />

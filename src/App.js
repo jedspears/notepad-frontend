@@ -11,47 +11,39 @@ import './App.css';
 
 function App() {
 
-  // var debounce = require('debounce')
-
-  const[notes, setNotes] = useState([])
+  const[{notes, selectedNoteId}, setNoteData] = useState({notes: [], selectedNoteId: null})
   const[user, setUser] = useState({})
   const[loggedIn, setLoggedIn] = useState(false)
-  const[selectedNote, setSelectedNote] = useState({title: "", content: "", user_id: user.id, id:null})
+  // const[selectedNoteId, setSelectedNoteId] = useState(null)
   const[themeToggle, setThemetoggle] = useState(false)
 
   const [weather, setWeather] = useContext(WeatherContext)
-  // const theme = loggedIn ? user.weather.icon : "clear"
-  // setWeather(theme)
 
-  // useEffect(() => {
-  //   if (themeToggle) {
-  //     const theme = loggedIn ? user.weather.icon : "clear"
-  //     setWeather(theme)
-  //   } else {
-  //     setWeather("default")
-  //   }
+  useEffect(() => {
+    if (themeToggle) {
+      const theme = loggedIn ? user.weather.icon : "clear"
+      setWeather(theme)
+    } else {
+      setWeather("default")
+    }
 
-  // }, [themeToggle])
-
-  const [weather, setWeather] = React.useContext(WeatherContext)
-  const theme = loggedIn ? user.weather.icon : "clear"
-  setWeather(theme)
+  }, [themeToggle])
 
   useEffect(()=> {
     if (user.notes) {
-      setNotes(user.notes)
+      setNoteData({selectedNoteId: selectedNoteId, notes: user.notes })
     }
   }, [user])
 
   useEffect(() => {
     if (loggedIn) {
-      if (selectedNote.id) {
+      if (selectedNoteId) {
         updateNote()
       } else {
         createNote()
       }
     }
-  }, [selectedNote, loggedIn])
+  }, [selectedNoteId, loggedIn])
 
   const createNote = () => {
     fetch('http://localhost:3000/api/v1/notes', {
@@ -64,29 +56,48 @@ function App() {
     })
     .then(res => res.json())
     .then(data => {
-      setSelectedNote(data)
-      addNote(data)
+      console.log(data.id)
+      // addNote(data)
+      // setSelectedNoteId(data.id)
+      setNoteData({notes: [...notes, data], selectedNoteId: data.id})
     })
   }
 
   const updateNote = () => {
-    console.log(selectedNote)
-    fetch(`http://localhost:3000/api/v1/notes/${selectedNote.id}`, {
+    fetch(`http://localhost:3000/api/v1/notes/${selectedNoteId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      body: JSON.stringify(selectedNote)
+      body: JSON.stringify(getSelectedNote())
     })
   }
 
   const handleChange = (e) => {
-    setSelectedNote({...selectedNote, [e.target.name]:e.target.value})
+    setNoteData({notes:
+      notes.map(note => {
+        if(note.id === selectedNoteId) {
+          let updatedNote = {...note, [e.target.name]: e.target.value}
+          return updatedNote
+        } else {
+          return note
+        }
+      }), selectedNoteId: selectedNoteId}
+    )
   }
 
   const changeTheme = () => {
     setThemetoggle(!themeToggle)
+  }
+
+  const getSelectedNote =()=> {
+    if (selectedNoteId) {
+      const n = notes.find(note => note.id === selectedNoteId)
+      console.log(notes)
+      return n
+    }
+    return {title: "", content: "", user_id: user.id}
   }
 
   const checkLogIn = () => {
@@ -94,16 +105,16 @@ function App() {
       return (
         <div>
           <Notepad
-            addNote={addNote}
+            // addNote={addNote}
             user={user}
-            selectedNote={selectedNote}
+            selectedNote={getSelectedNote()}
             handleChange={handleChange}
             createNote={createNote}
             themeToggle={themeToggle}
             changeTheme={changeTheme}
           />
           <UserNotesContainer
-            selectedNote={selectedNote}
+            selectedNoteId={getSelectedNote()}
             notes={notes}
             selectNote={selectNote}
           />
@@ -121,21 +132,19 @@ function App() {
     }
   }
 
-  const addNote = (note) => {
-    setNotes([...notes, note])
-  }
+  // const addNote = (note) => {
+  //   setNotes([...notes, note])
+  // }
 
   const selectNote = (newNote) => {
     updateNote()
-    setSelectedNote(newNote)
+    setNoteData({notes: notes, selectedNoteId: newNote.id})
   }
 
   const setCurrentUser = (newUser) => {
     setUser(newUser)
     setLoggedIn(true)
   }
-
-
 
   return (
     <div className="App">

@@ -5,46 +5,9 @@ import { weather, WeatherContext } from '../weather-context'
 
 function Notepad(props) {
 
+  console.log(props)
+
   const [weather, setWeather] = React.useContext(WeatherContext)
-
-  //const [weather, setWeather] = React.useContext(WeatherContext)
-
-  // const[noteData, setNoteData] = useState({title: "", content: "", user_id: props.user.id})
-  // const[noteId, setNoteId] = useState(null)
-
-
-  // useEffect(() => {
-  //   if(props.selectedNote) {
-  //     setNoteData(props.selectedNote)
-  //   }
-  // }, [props.selectedNote])
-
-  // const createNote = () => {
-  //   fetch('http://localhost:3000/api/v1/notes', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Accept': 'application/json'
-  //     },
-  //     body: JSON.stringify({noteData})
-  //   })
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     props.selectNote(data)
-  //     props.addNote(data)
-  //   })
-  // }
-
-  // const updateNote = (noteData) => {
-  //   fetch(`http://localhost:3000/api/v1/notes/${props.selectedNote.id}`, {
-  //     method: 'PATCH',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Accept': 'application/json'
-  //     },
-  //     body: JSON.stringify(noteData)
-  //   })
-  // }
 
   return (
     <div>
@@ -81,8 +44,10 @@ function Notepad(props) {
       <a 
         id="toggle-button"
         onClick={()=>props.changeTheme()}
-        class="waves-effect waves-light btn">
-          {props.themeToggle ? "Defualt Theme" : "Live Theme"}
+        class="waves-effect waves-light btn"
+        style={{backgroundColor: weather.accent, color: weather.text}}
+      >
+        {props.themeToggle ? "Default Theme" : "Live Theme"}
       </a>
     </div>
   );

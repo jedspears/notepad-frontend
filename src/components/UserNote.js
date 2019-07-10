@@ -4,15 +4,13 @@ import '../UserNote.css'
 function UserNote(props) {
   console.log(props)
   const renderNote = () => {
-    if (props.note.id === props.selectedNote.id) {
-      console.log(props.selectedNote.title)
+    if (props.note.id === props.selectedNoteId.id) {
       return (
         <li id="baba" className="collection-item avatar">
           <i id="selected-note-icon" class="material-icons circle">note</i>
           <span id="note-card-title" className="title">
-            {props.selectedNote.title ? props.selectedNote.title : "Untitled"}
+            {props.note.title ? props.note.title : "Untitled"}
           </span>
-          <p>first line</p>
         </li>
       )
     } else {
@@ -25,7 +23,6 @@ function UserNote(props) {
           <span id="note-card-title" className="title">
             {props.note.title ? props.note.title : "Untitled"}
           </span>
-          <p>first line</p>
         </li>
       )
     }
