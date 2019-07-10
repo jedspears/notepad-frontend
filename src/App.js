@@ -26,7 +26,6 @@ function App() {
     } else {
       setWeather("default")
     }
-
   }, [themeToggle])
 
   useEffect(()=> {

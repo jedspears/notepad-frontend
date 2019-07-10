@@ -19,6 +19,7 @@ function Weather(props) {
         id="summary">
         {props.weather.summary}
       </h3>
+
     </div>
   )
 }
