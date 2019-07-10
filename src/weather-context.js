@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 export const weather = {
   clear: {
-    light1: '#aff6ff',
+    light1: '#fafff4',
     light2: '#edd58e',
   },
   rain: {

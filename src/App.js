@@ -5,6 +5,7 @@ import UserNotesContainer from './containers/UserNotesContainer'
 import ThemedComponent from './components/ThemedComponent'
 import UserLoginContainer from './containers/UserLoginContainer'
 import WeatherContainer from './containers/WeatherContainer'
+import {WeatherContext} from './weather-context'
 import './App.css';
 
 function App() {
@@ -13,6 +14,10 @@ function App() {
   const[user, setUser] = useState({})
   const[loggedIn, setLoggedIn] = useState(false)
   const[selectedNote, setSelectedNote] = useState({title: "", content: "", user_id: user.id, id:null})
+
+  const [weather, setWeather] = React.useContext(WeatherContext)
+  const theme = loggedIn ? user.weather.icon : "clear"
+  setWeather(theme)
 
   useEffect(()=> {
     if (user.notes) {
@@ -65,7 +70,6 @@ function App() {
     if (loggedIn) {
       return (
         <div>
-          <ThemedComponent currentWeather={user.weather}/>
           <Notepad
             addNote={addNote}
             user={user}
@@ -105,6 +109,8 @@ function App() {
     setUser(newUser)
     setLoggedIn(true)
   }
+
+
 
   return (
     <div className="App">
