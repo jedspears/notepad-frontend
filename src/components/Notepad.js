@@ -4,78 +4,61 @@ import '../Notepad.css'
 
 function Notepad(props) {
 
-  const[noteData, setNoteData] = useState({title: "", content: "", user_id: props.user.id})
-  const[noteId, setNoteId] = useState(null)
+  // const[noteData, setNoteData] = useState({title: "", content: "", user_id: props.user.id})
+  // const[noteId, setNoteId] = useState(null)
 
-  // useEffect((noteData) => {
-  //   createNote(noteData)
-  // }, [])
 
-  useEffect(() => {
-    if (noteId) {
-      updateNote(noteData)
-    } else {
-      createNote(noteData)
-    }
-    console.log("in effect", noteData)
-  }, [noteData])
+  // useEffect(() => {
+  //   if(props.selectedNote) {
+  //     setNoteData(props.selectedNote)
+  //   }
+  // }, [props.selectedNote])
 
-  const createNote = () => {
-    fetch('http://localhost:3000/api/v1/notes', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({noteData})
-    })
-    .then(res => res.json())
-    .then(data => {
-      setNoteId(data.id)
-      props.addNote(data)
-      // return data
-    })
-    // .then(data => props.addNote(data))
-  }
+  // const createNote = () => {
+  //   fetch('http://localhost:3000/api/v1/notes', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json'
+  //     },
+  //     body: JSON.stringify({noteData})
+  //   })
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     props.selectNote(data)
+  //     props.addNote(data)
+  //   })
+  // }
 
-  const updateNote = (noteData) => {
-    fetch(`http://localhost:3000/api/v1/notes/${noteId}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(noteData)
-    })
-  }
-
-  const handleChange = (e) => {
-    setNoteData({...noteData, [e.target.name]:e.target.value})
-  }
-
-  const print = () => {
-    console.log(noteData.content, noteData.title)
-  }
+  // const updateNote = (noteData) => {
+  //   fetch(`http://localhost:3000/api/v1/notes/${props.selectedNote.id}`, {
+  //     method: 'PATCH',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json'
+  //     },
+  //     body: JSON.stringify(noteData)
+  //   })
+  // }
 
   return (
     <div>
-      {print()}
       <form>
         <input
           id="note-title"
           placeholder="Title" 
-          onChange={(e)=>handleChange(e)}
+          onChange={(e)=>props.handleChange(e)}
           type="text" 
-          value={noteData.title}
+          value={props.selectedNote.title}
           name="title">
         </input>
         <div className="input-field" ></div>
           <textarea 
             id="the-note"
             className="materialize-textarea"
-            onChange={(e)=>handleChange(e)}
+            onChange={(e)=>props.handleChange(e)}
             type="textArea" 
-            value={noteData.content}
+            value={props.selectedNote.content}
             name="content">
           </textarea>
         <div/>
