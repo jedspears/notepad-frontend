@@ -29,23 +29,27 @@ function UserLogin(props) {
   }
 
   return (
-    <form id="login-form"onSubmit={(e)=>handleSubmit(e)}>
+    <form id="login-form" onSubmit={(e)=>handleSubmit(e)}>
       <input
         id="login-field1"
         onChange={(e)=>handleChange(e)}
         value={userData.username}
         placeholder="Username"
-        name="username">
-      </input> 
+        name="username"
+        style={{color: '#cff'}}
+        >
+      </input>
       <input
         id="login-field2"
         onChange={(e)=>handleChange(e)}
         value={userData.password}
         type="password"
         placeholder="Password"
-        name="password">
-      </input> 
-      <button className="btn waves-effect waves-light" type="submit" name="action" id="soobmit">Submit
+        name="password"
+        style={{color: '#fcf'}}
+        >
+      </input>
+      <button className="btn waves-effect waves-light" type="submit" name="action" id="soobmit" style={{backgroundColor: '#4E1FAD'}}>Submit
         <i className="material-icons right"></i>
       </button>
     </form>

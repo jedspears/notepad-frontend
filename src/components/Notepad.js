@@ -55,7 +55,8 @@ function Notepad(props) {
           onChange={(e)=>props.handleChange(e)}
           type="text"
           value={props.selectedNote.title}
-          name="title">
+          name="title"
+          style={{color: weather.accent}}>
         </input>
         <div className="input-field" ></div>
           <textarea

@@ -1,12 +1,12 @@
 #login-container {
-  background-color: rgb(221, 177, 240);
+  background-color: #921EE1;
   width: 400px;
   height: 600px;
   left: 40%;
   top: 15%;
   border-radius: 5px;
   position: absolute;
-  box-shadow: 5px 5px rgb(105, 105, 105);
+  box-shadow: 10px 10px 5px #3A1881;
 }
 
 h1 {
