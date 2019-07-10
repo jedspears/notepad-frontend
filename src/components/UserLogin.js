@@ -5,7 +5,11 @@ import { useState } from 'react';
 
 function UserLogin(props) {
 
-  const[userData, setUserData] = useState({username: "", password: "", lat: 40, lng: -74})
+  const[userData, setUserData] = useState({username: "", password: "", lat: 55, lng: 22})
+
+  navigator.geolocation.getCurrentPosition((pos) => {
+    setUserData({...userData, lat: pos.coords.latitude, lng: pos.coords.longitude})
+  })
 
   const handleChange = (e) => {
     setUserData({...userData, [e.target.name]:e.target.value})

@@ -5,10 +5,12 @@ import '../UserNotesContainer.css'
 function UserNotesContainer(props) {
 
   const renderNotes = () => {
-    console.log(props)
+    console.log(props.notes)
     return (
       props.notes.map(note =>  
         <UserNote
+          selectNote={props.selectNote}
+          selectedNote={props.selectedNote}
           key={note.id}
           {...note}
         />
