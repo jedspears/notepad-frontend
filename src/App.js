@@ -33,6 +33,10 @@ function App() {
 
   // }, [themeToggle])
 
+  const [weather, setWeather] = React.useContext(WeatherContext)
+  const theme = loggedIn ? user.weather.icon : "clear"
+  setWeather(theme)
+
   useEffect(()=> {
     if (user.notes) {
       setNotes(user.notes)

@@ -65,7 +65,7 @@ function Notepad(props) {
             type="textArea"
             value={props.selectedNote.content}
             name="content"
-            style={{backgroundColor: weather.light1, color: weather.text,}}
+            style={{backgroundColor: weather.background, color: weather.text,}}
             >
           </textarea>
         <div/>
@@ -74,7 +74,7 @@ function Notepad(props) {
         id="add-button-boi"
         onClick={()=>props.createNote()}
         className="btn-floating btn-large waves-effect waves-light"
-        style={{backgroundColor: weather.light2}}
+        style={{backgroundColor: weather.accent, color: weather.text}}
         >
         <i class="material-icons medium">add</i>
       </a>
