@@ -20,7 +20,7 @@ function UserNotesContainer(props) {
 
   return (
     <div id="notes-container">
-      <ul className="collection">
+      <ul id="note-collection" className="collection">
         {renderNotes()}
       </ul>
     </div>

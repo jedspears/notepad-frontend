@@ -3,13 +3,13 @@
   color: white;
   z-index: 30;
   position: absolute;
-  left: 85%;
+  left: 84%;
   top: 15%;
 }
 
 #summary {
   font-size: 2.2em;
-  color: white;
+  color: rgb(201, 144, 240);
   z-index: 30;
   position: absolute;
   left: 84%;
