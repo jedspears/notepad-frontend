@@ -12,7 +12,7 @@ function UserNotesContainer(props) {
           selectNote={props.selectNote}
           selectedNote={props.selectedNote}
           key={note.id}
-          {...note}
+          note={note}
         />
       )
     )

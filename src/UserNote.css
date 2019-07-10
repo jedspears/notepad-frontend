@@ -2,6 +2,27 @@
   height: 40px;
 }
 
-#note-title {
+#note-card-title {
   font-weight: bolder;
+}
+
+.collection-item {
+  cursor: pointer;
+}
+
+#baba {
+  background-color: lightblue;
+}
+
+#gaga {
+  background-color: rgb(23, 22, 23);
+  color: white;
+}
+
+#selected-note-icon {
+  background-color: blue;
+}
+
+#note-icon {
+  background-color: rgb(201, 144, 240);
 }

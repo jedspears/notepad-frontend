@@ -17,7 +17,7 @@ function App() {
     if (user.notes) {
       setNotes(user.notes)
     }
-  }, [user, notes])
+  }, [user])
 
   useEffect(() => {
     if (loggedIn) {
@@ -74,6 +74,7 @@ function App() {
             selectedNote={selectedNote}
             notes={notes}
             selectNote={selectNote}
+            createNote={createNote}
           />
           <WeatherContainer
             weather={user.weather}
@@ -93,8 +94,9 @@ function App() {
     setNotes([...notes, note])
   }
 
-  const selectNote = (note) => {
-    setSelectedNote(note)
+  const selectNote = (newNote) => {
+    updateNote()
+    setSelectedNote(newNote)
   }
 
   const setCurrentUser = (newUser) => {
