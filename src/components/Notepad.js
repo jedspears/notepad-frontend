@@ -63,6 +63,12 @@ function Notepad(props) {
           </textarea>
         <div/>
       </form>
+      <a 
+        id="add-button-boi"
+        onClick={()=>props.createNote()}
+        className="btn-floating btn-large waves-effect waves-light">
+        <i class="material-icons medium">add</i>
+      </a>
     </div>
   );
 }
