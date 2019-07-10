@@ -1,8 +1,13 @@
 import React from 'react';
 import { useState, useEffect } from 'react'
 import '../Notepad.css'
+import { weather, WeatherContext } from '../weather-context'
 
 function Notepad(props) {
+
+  const [weather, setWeather] = React.useContext(WeatherContext)
+
+  //const [weather, setWeather] = React.useContext(WeatherContext)
 
   // const[noteData, setNoteData] = useState({title: "", content: "", user_id: props.user.id})
   // const[noteId, setNoteId] = useState(null)
@@ -46,28 +51,38 @@ function Notepad(props) {
       <form>
         <input
           id="note-title"
-          placeholder="Title" 
+          placeholder="Title"
           onChange={(e)=>props.handleChange(e)}
-          type="text" 
+          type="text"
           value={props.selectedNote.title}
           name="title">
         </input>
         <div className="input-field" ></div>
-          <textarea 
+          <textarea
             id="the-note"
             className="materialize-textarea"
             onChange={(e)=>props.handleChange(e)}
-            type="textArea" 
+            type="textArea"
             value={props.selectedNote.content}
-            name="content">
+            name="content"
+            style={{backgroundColor: weather.light1, color: weather.text,}}
+            >
           </textarea>
         <div/>
       </form>
-      <a 
+      <a
         id="add-button-boi"
         onClick={()=>props.createNote()}
-        className="btn-floating btn-large waves-effect waves-light">
+        className="btn-floating btn-large waves-effect waves-light"
+        style={{backgroundColor: weather.light2}}
+        >
         <i class="material-icons medium">add</i>
+      </a>
+      <a 
+        id="toggle-button"
+        onClick={()=>props.changeTheme()}
+        class="waves-effect waves-light btn">
+          {props.themeToggle ? "Defualt Theme" : "Live Theme"}
       </a>
     </div>
   );

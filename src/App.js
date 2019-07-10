@@ -1,9 +1,12 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Notepad from './components/Notepad';
 import UserNotesContainer from './containers/UserNotesContainer'
+import ThemedComponent from './components/ThemedComponent'
 import UserLoginContainer from './containers/UserLoginContainer'
 import WeatherContainer from './containers/WeatherContainer'
+import {WeatherContext} from './weather-context'
+
 import './App.css';
 
 function App() {
@@ -14,14 +17,23 @@ function App() {
   const[user, setUser] = useState({})
   const[loggedIn, setLoggedIn] = useState(false)
   const[selectedNote, setSelectedNote] = useState({title: "", content: "", user_id: user.id, id:null})
+  const[themeToggle, setThemetoggle] = useState(false)
+
+  const [weather, setWeather] = useContext(WeatherContext)
+  // const theme = loggedIn ? user.weather.icon : "clear"
+  // setWeather(theme)
 
   // useEffect(() => {
-  //   if (loggedIn) {
-  //     notes.reverse()
+  //   if (themeToggle) {
+  //     const theme = loggedIn ? user.weather.icon : "clear"
+  //     setWeather(theme)
+  //   } else {
+  //     setWeather("default")
   //   }
-  // }, [])
 
-  useEffect(() => {
+  // }, [themeToggle])
+
+  useEffect(()=> {
     if (user.notes) {
       setNotes(user.notes)
     }
@@ -69,6 +81,10 @@ function App() {
     setSelectedNote({...selectedNote, [e.target.name]:e.target.value})
   }
 
+  const changeTheme = () => {
+    setThemetoggle(!themeToggle)
+  }
+
   const checkLogIn = () => {
     if (loggedIn) {
       return (
@@ -79,6 +95,8 @@ function App() {
             selectedNote={selectedNote}
             handleChange={handleChange}
             createNote={createNote}
+            themeToggle={themeToggle}
+            changeTheme={changeTheme}
           />
           <UserNotesContainer
             selectedNote={selectedNote}
@@ -112,6 +130,8 @@ function App() {
     setUser(newUser)
     setLoggedIn(true)
   }
+
+
 
   return (
     <div className="App">
