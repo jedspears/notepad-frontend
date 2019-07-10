@@ -1,45 +1,50 @@
 import React, { useState } from 'react'
 
 export const weather = {
+  default: {
+    background: '#171617',
+    accent: '#C990F0',
+    text: '#1A141F',
+  },
   clear: {
-    light1: '#fafff4',
-    light2: '#edd58e',
-    text: '#014',
+    background: '#fafff4',
+    accent: '#F0B890',
+    text: '#1F1914',
   },
   rain: {
-    light1: '#cff',
-    light2: '#f00',
-    text: '#014',
+    background: '#D7E1F5',
+    accent: '#9098F0',
+    text: '#14171F',
   },
   snow: {
-    light1: '#e2fffc',
-    light2: '#e9e7b7',
-    text: '#014',
+    background: '#e2fffc',
+    accent: '#90D0F0',
+    text: '#2E3538',
   },
   sleet: {
-    light1: '#b3cac8',
-    light2: '#e4cfc6',
-    text: '#014',
+    background: '#9FC6C2',
+    accent: '#70C2AD',
+    text: '#171C1B',
   },
   wind: {
-    light1: '#efefef',
-    light2: '#d0e0e3',
-    text: '#014',
+    background: '#efefef',
+    accent: '#E0B8B8',
+    text: '#382E2E',
   },
   fog: {
-    light1: '#d9d9d9',
-    light2: '#bcb6ca',
-    text: '#014',
+    background: '#BCBCCD',
+    accent: '#7B5FBB',
+    text: '#2F293D',
   },
   cloudy: {
-    light1: '#b7b7b7',
-    light2: '#bec9b0',
-    text: '#014',
+    background: '#b7b7b7',
+    accent: '#C0D7A2',
+    text: '#343D29',
   },
   partlyCloudy: {
-    light1: '#cccccc',
-    light2: '#e7d0a2',
-    text: '#014',
+    background: '#cccccc',
+    accent: '#D5AD5D',
+    text: '#260D0D',
   },
 };
 
