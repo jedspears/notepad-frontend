@@ -4,7 +4,7 @@ export const weather = {
   default: {
     background: '#171617',
     accent: '#C990F0',
-    text: '#1A141F',
+    text: '#D7E1F5',
   },
   clear: {
     background: '#fafff4',
@@ -34,12 +34,12 @@ export const weather = {
   fog: {
     background: '#BCBCCD',
     accent: '#7B5FBB',
-    text: '#2F293D',
+    text: '#efefef',
   },
   cloudy: {
-    background: '#b7b7b7',
+    background: '#6a6a67',
     accent: '#C0D7A2',
-    text: '#343D29',
+    text: '#fafff4',
   },
   partlyCloudy: {
     background: '#cccccc',
