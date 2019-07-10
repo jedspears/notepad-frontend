@@ -79,6 +79,12 @@ function Notepad(props) {
         >
         <i class="material-icons medium">add</i>
       </a>
+      <a 
+        id="toggle-button"
+        onClick={()=>props.changeTheme()}
+        class="waves-effect waves-light btn">
+          {props.themeToggle ? "Defualt Theme" : "Live Theme"}
+      </a>
     </div>
   );
 }
